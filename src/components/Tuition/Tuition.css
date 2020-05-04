@@ -4,7 +4,7 @@
     width: 100%;
     height: 100%;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: left;
     align-items: center;
     color: white;
 }
@@ -18,7 +18,36 @@
 }
 
 .plot {
-    height: 600px; 
+    height: 600px;
     flex: 2 0;
-    background-color: black;
 }
+
+.axis {
+    font: 16px arial;
+}
+
+.axis-label {
+    fill: white;
+    font-family: Arial;
+    font-size: 18px;
+}
+
+.plot-title {
+    font-family: Arial sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    fill: #F2F2F2;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: black;
+    border-radius: 8px;
+    text-align: left;
+    padding: 10px;
+    opacity: 0.7;
+    display: none;
+}
+
+
+
