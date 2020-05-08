@@ -26,7 +26,7 @@ function App() {
                 menu=".menu"
                 navigation={true}
                 scrollOverflow={true}
-                sectionsColor={["#FF5F45", "#0798EC", "#FC6C7C", "#FEC401"]}
+                sectionsColor={["#FF5F45", "#141B41", "#AD3B44", "#FEC401"]}
                 onLeave={onLeave.bind(this)}
                 afterLoad={afterLoad.bind(this)}
                 render={({ state, fullpageApi }) => (

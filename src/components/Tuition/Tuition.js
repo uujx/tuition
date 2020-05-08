@@ -1,43 +1,38 @@
 import React, { useState, useEffect } from "react"
-import * as d3 from 'd3'
+import { csv, select } from "d3"
 
-import draw from './draw'
+import draw from "./draw"
 // need to import the data in React and then can parse it with d3.csv()
-import data from '../../data/tuition.csv'
+import data from "../../data/tuition.csv"
 import "./Tuition.css"
 
-const Tuition = props => {
-
+const Tuition = () => {
     const [tuitionState, setTuitionState] = useState([])
 
     useEffect(() => {
-        d3.csv(data).then(data => {
+        csv(data).then((data) => {
             setTuitionState(data)
         })
     }, [])
 
     useEffect(() => {
-        d3.select('.plot > *').remove();
+        select(".tuition-plot > *").remove()
         draw(tuitionState)
     }, [tuitionState])
 
     return (
-        <div className="section" data-anchor="tuitionPage">
-            <div className="container">
-                <div className="text-box">
-                    <h3>Tuition</h3>
-                    <p className="description">
-                        Detailed description goes here.Detailed description goes
-                        here.Detailed description goes here.Detailed description
-                        goes here.Detailed description goes here.Detailed
-                        description goes here.Detailed description goes
-                        here.Detailed description goes here.Detailed description
-                        goes here.Detailed description goes here.Detailed
-                        description goes here.
-                    </p>
-                </div>
-                <div className="plot"></div>
+        <div className="section container" data-anchor="tuitionPage">
+            <div className="tuition-text-box">
+                <h3>Tuition</h3>
+                <p className="tuition-description">
+                    Data description: the tuition fee increase a lot throughout the years.
+                    For private colledge, the tuition is almost half amount of the median of 
+                    annual household income. 
+                    Data source: ...
+                    Created by D3.js
+                </p>
             </div>
+            <div className="tuition-plot"></div>
         </div>
     )
 }

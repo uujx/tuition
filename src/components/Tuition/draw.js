@@ -27,7 +27,7 @@ const draw = (data) => {
     const pixel_y_range = [height - margin.bottom, margin.top]
 
     const svg = d3
-        .select(".plot")
+        .select(".tuition-plot")
         .append("svg")
         .attr("width", "100%")
         .attr("height", "100%")
@@ -68,10 +68,6 @@ const draw = (data) => {
                 .style("text-anchor", "middle")
                 .attr("y", 15)
                 .attr("fill", "#FFF")
-
-            g.selectAll("line").attr("stroke", "#FFF")
-
-            g.select(".domain").attr("stroke", "#FFF")
         })
 
     svg.append("g")
@@ -92,7 +88,7 @@ const draw = (data) => {
             g.select(".domain").remove()
         })
         .append("text")
-        .attr("x", 50)
+        .attr("x", 20)
         .attr("y", -10)
         .attr("fill", "#FFF")
         .text("Tuition Constant Dollars")
@@ -171,7 +167,7 @@ const draw = (data) => {
     /***********************************************************************************/
 
     // CREATE HOVER TOOLTIP WITH VERTICAL LINE //
-    const tooltip = d3.select(".plot").append("div").attr("class", "tooltip")
+    const tooltip = d3.select(".tuition-plot").append("div").attr("class", "tuition-tooltip")
 
     const mouseG = svg.append("g").attr("class", "mouse-over-effects")
 
@@ -212,13 +208,13 @@ const draw = (data) => {
             d3.select(".mouse-line").style("opacity", "0")
             d3.selectAll(".mouse-per-line circle").style("opacity", "0")
             d3.selectAll(".mouse-per-line text").style("opacity", "0")
-            d3.selectAll(".tooltip").style("opacity", "0")
+            d3.selectAll(".tuition-tooltip").style("opacity", "0")
         })
         .on("mouseover", function () {
             // on mouse in show line, circles and text
             d3.select(".mouse-line").style("opacity", "0.7")
             d3.selectAll(".mouse-per-line circle").style("opacity", "1")
-            d3.selectAll(".tooltip").style("opacity", "0.6")
+            d3.selectAll(".tuition-tooltip").style("opacity", "0.8")
         })
         .on("mousemove", function () {
             // update tooltip content, line, circles and text when mouse moves
@@ -265,7 +261,7 @@ const draw = (data) => {
                 year: d.values[idx].Year.getFullYear(),
             })
         })
-        console.log(sortingObj)
+
         sortingObj.sort(function (x, y) {
             return d3.descending(x.tuition, y.tuition)
         })
@@ -273,9 +269,9 @@ const draw = (data) => {
         var sortingArr = sortingObj.map((d) => d.key)
 
         var res_nested1 = nested.slice().sort(function (a, b) {
-            return sortingArr.indexOf(a.key) - sortingArr.indexOf(b.key) 
+            return sortingArr.indexOf(a.key) - sortingArr.indexOf(b.key)
         })
-        
+
         const year = x.invert(mouse[0] + margin.left).getFullYear() + 1
         tooltip
             .html(year + ":")
@@ -299,7 +295,7 @@ const draw = (data) => {
                 }).left
                 var idx = bisect(d.values, xDate)
 
-                return `${d.key}: $<Strong>${d.values[idx].Tuition}</Strong>`
+                return `${d.key}: <span class="number">$<Strong>${d.values[idx].Tuition}</Strong></span>`
             })
     }
 

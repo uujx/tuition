@@ -15,16 +15,22 @@
 .menu li {
     margin: 10px 15px;
 }
-
+ 
 .menu a {
     display: block;
     text-decoration: none;
     padding: 7px 15px;
     font-size: 18px;
     color: white;
+    opacity: 0.8;
+}
+
+.menu a:hover {
+    opacity: 1;
 }
 
 .active a {
     font-weight: bold;
     border-bottom: 2px solid white;
+    opacity: 1;
 }
