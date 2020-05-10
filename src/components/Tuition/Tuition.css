@@ -14,22 +14,6 @@
     font-size: 24px;
 }
 
-.axis {
-    font: 16px arial;
-}
-
-.axis-label {
-    fill: white;
-    font-family: Arial;
-    font-size: 18px;
-}
-
-.plot-title {
-    font-family: Arial sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    fill: #f2f2f2;
-}
 
 .tuition-tooltip {
     position: absolute;

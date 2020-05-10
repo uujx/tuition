@@ -23,7 +23,7 @@ const Salary = (props) => {
         responsive: true,
         title: {
             display: true,
-            text: "Career Salary by Major",
+            text: "Mid Career Salary by Major",
             fontColor: "white",
             fontSize: 20,
         },
@@ -171,8 +171,16 @@ const Salary = (props) => {
     return (
         <div className="section" data-anchor="salaryPage">
             <div className="slide">
-                <div className="text-box">
+                <div className="salary-text-box">
                     <h3>How College Pays back</h3>
+                    <p className="description">
+                        Detailed description.Detailed description.Detailed
+                        description.Detailed description.Detailed
+                        description.Detailed description.Detailed
+                        description.Detailed description.Detailed
+                        description.Detailed description.Detailed
+                        description.Detailed description.Detailed description.
+                    </p>
                 </div>
             </div>
             <div className="slide">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { csv, select } from "d3"
 
 import draw from "./draw"
@@ -9,6 +9,8 @@ import "./Tuition.css"
 const Tuition = () => {
     const [tuitionState, setTuitionState] = useState([])
 
+    const box = useRef()
+
     useEffect(() => {
         csv(data).then((data) => {
             setTuitionState(data)
@@ -17,14 +19,14 @@ const Tuition = () => {
 
     useEffect(() => {
         select(".tuition-plot > *").remove()
-        draw(tuitionState)
+        draw(tuitionState, box.current.offsetWidth, box.current.offsetHeight)
     }, [tuitionState])
 
     return (
         <div className="section container" data-anchor="tuitionPage">
             <div className="tuition-text-box">
                 <h3>Tuition</h3>
-                <p className="tuition-description">
+                <p className="description">
                     Data description: the tuition fee increase a lot throughout the years.
                     For private colledge, the tuition is almost half amount of the median of 
                     annual household income. 
@@ -32,7 +34,7 @@ const Tuition = () => {
                     Created by D3.js
                 </p>
             </div>
-            <div className="tuition-plot"></div>
+            <div ref={box} className="tuition-plot"></div>
         </div>
     )
 }

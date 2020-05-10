@@ -1,6 +1,7 @@
 import * as d3 from "d3"
 
-const draw = (data) => {
+const draw = (data, boxWidth, boxHeight) => {
+    console.log(boxWidth, boxHeight)
     // parse the data since the data read from .csv are all strings
     const parseDate = d3.timeParse("%Y")
     data.forEach((d) => {
@@ -18,11 +19,12 @@ const draw = (data) => {
     const margin = {
         top: 100,
         right: 20,
-        bottom: 20,
+        bottom: 40,
         left: 150,
     }
-    const width = 700 + margin.left + margin.right
-    const height = 450 + margin.top + margin.bottom
+    // #009392,#39b185,#9ccb86,#e9e29c,#eeb479,#e88471,#cf597e
+    const width = boxWidth * 0.8 + margin.left + margin.right
+    const height = boxHeight * 0.75 + margin.top + margin.bottom
     const pixel_x_range = [margin.left, width - margin.right]
     const pixel_y_range = [height - margin.bottom, margin.top]
 
@@ -35,7 +37,7 @@ const draw = (data) => {
     var color = d3
         .scaleOrdinal()
         .domain(category)
-        .range(["#E8C547", "#D72638", "#61E786", "#EF8354"])
+        .range(["#76F7BF", "#F17300", "#FF4365", "#C42021"])
 
     const x = d3
         .scaleTime()
@@ -57,7 +59,7 @@ const draw = (data) => {
     const yAxis = d3
         .axisLeft(y)
         .ticks(10, "s")
-        .tickSize(-width + margin.left)
+        .tickSize(-width + margin.left + margin.right)
 
     svg.append("g")
         .attr("class", "axis")
@@ -72,6 +74,12 @@ const draw = (data) => {
 
     svg.append("g")
         .attr("class", "axis")
+        .call(d3.axisLeft(y).tickFormat(""))
+        .attr("transform", `translate(${margin.left - 5}, 0)`)
+        
+
+    svg.append("g")
+        .attr("class", "axis")
         .attr("transform", `translate(${margin.left}, 0)`)
         .call(yAxis)
         .call((g) => {
@@ -82,16 +90,22 @@ const draw = (data) => {
 
             g.selectAll("line")
                 .attr("stroke", "#FFF")
-                .attr("stroke-width", 0.7) // make horizontal tick thinner and lighter so that line paths can stand out
+                // make horizontal tick thinner and lighter so that line paths can stand out
+                .attr("stroke-width", 0.7)
                 .attr("opacity", 0.4)
 
             g.select(".domain").remove()
         })
-        .append("text")
-        .attr("x", 20)
-        .attr("y", -10)
-        .attr("fill", "#FFF")
-        .text("Tuition Constant Dollars")
+        .call((g) =>
+            g
+                .select(".tick:last-of-type text")
+                .clone()
+                .attr("y", -35)
+                .attr("text-anchor", "start")
+                .attr("font-size", "1vw")
+                .text("Constant Dollars")
+        )
+
 
     /***********************************************************************************/
     /********************************Create legends*************************************/
@@ -99,7 +113,7 @@ const draw = (data) => {
     var svgLegend = svg
         .append("g")
         .attr("class", "gLegend")
-        .attr("transform", "translate(" + (width + 20) + "," + margin.top + ")")
+        .attr("transform", `translate(${width * 0.8},${margin.top * 0.4})`)
 
     var legend = svgLegend
         .selectAll(".legend")
@@ -125,7 +139,7 @@ const draw = (data) => {
         .attr("x", 6 * 2)
         .attr("y", 6 / 2)
         .style("fill", "#FFF")
-        .style("font-size", 14)
+        .style("font-size", "0.8vw")
         .text((d) => d)
 
     /***********************************************************************************/
@@ -167,7 +181,10 @@ const draw = (data) => {
     /***********************************************************************************/
 
     // CREATE HOVER TOOLTIP WITH VERTICAL LINE //
-    const tooltip = d3.select(".tuition-plot").append("div").attr("class", "tuition-tooltip")
+    const tooltip = d3
+        .select(".tuition-plot")
+        .append("div")
+        .attr("class", "tuition-tooltip")
 
     const mouseG = svg.append("g").attr("class", "mouse-over-effects")
 
@@ -197,8 +214,8 @@ const draw = (data) => {
 
     mouseG
         .append("svg:rect") // append a rect to catch mouse movements on canvas
-        .attr("width", 700)
-        .attr("height", 450)
+        .attr("width", boxWidth * 0.8)
+        .attr("height", boxHeight * 0.75)
         .attr("transform", `translate(${margin.left}, ${margin.top})`)
         .attr("fill", "none")
         .style("opacity", "0.1")
@@ -308,14 +325,6 @@ const draw = (data) => {
         .attr("width", 500)
         .attr("height", height)
 
-    // text label for the x axis
-    chartDescription
-        .append("text")
-        .attr("class", "axis-label")
-        .attr("transform", `translate(${width / 2 + 60}, ${height + 30})`)
-        .style("text-anchor", "middle")
-        .text("Year")
-
     // Add plot title
     chartDescription
         .append("text")
@@ -326,75 +335,3 @@ const draw = (data) => {
 }
 
 export default draw
-
-// // Add the line for household income
-// lineChart.append("path")
-//     .datum(data.filter((d) => d.Type === "Annual Household Income"))
-//     .attr("fill", "none")
-//     .attr("stroke", "#E8C547")
-//     .attr("stroke-width", 3)
-//     .attr(
-//         "d",
-//         d3
-//             .line()
-//             .x(function (d) {
-//                 return x(d.Year)
-//             })
-//             .y(function (d) {
-//                 return y(d.Tuition)
-//             })
-//     )
-
-// // Add the line for private institution
-// lineChart.append("path")
-//     .datum(data.filter((d) => d.Type === "Private Institution"))
-//     .attr("fill", "none")
-//     .attr("stroke", "#D72638")
-//     .attr("stroke-width", 3)
-//     .attr(
-//         "d",
-//         d3
-//             .line()
-//             .x(function (d) {
-//                 return x(d.Year)
-//             })
-//             .y(function (d) {
-//                 return y(d.Tuition)
-//             })
-//     )
-
-// // Add the line for all institution
-// lineChart.append("path")
-//     .datum(data.filter((d) => d.Type === "All Institution"))
-//     .attr("fill", "none")
-//     .attr("stroke", "#61E786")
-//     .attr("stroke-width", 3)
-//     .attr(
-//         "d",
-//         d3
-//             .line()
-//             .x(function (d) {
-//                 return x(d.Year)
-//             })
-//             .y(function (d) {
-//                 return y(d.Tuition)
-//             })
-//     )
-
-// // Add the line for public institution
-// lineChart.append("path")
-//     .datum(data.filter((d) => d.Type === "Public Institution"))
-//     .attr("fill", "none")
-//     .attr("stroke", "#EF8354")
-//     .attr("stroke-width", 3)
-//     .attr(
-//         "d",
-//         d3
-//             .line()
-//             .x(function (d) {
-//                 return x(d.Year)
-//             })
-//             .y(function (d) {
-//                 return y(d.Tuition)
-//             })
-//     )

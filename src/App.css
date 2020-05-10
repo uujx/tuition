@@ -3,12 +3,29 @@ body {
   height: 100%;
 }
 
+
 h3 {
-  font-size: 5em;
+  font-size: 4vw;
   text-align: center;
   color: #fff;
   font-weight: 700;
   margin: 50px 0;
+}
+
+h4 {
+  font-size: 3vw;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  margin: 50px 0;
+}
+
+.description {
+  font-size: 1.2vw;
+  line-height: 1.6;
+  text-align: center;
+  color: #fff;
+  margin: auto;
 }
 
 .fp-section {
@@ -33,6 +50,23 @@ button {
   width: 100%;
   height: 100%;
   color: white;
+}
+
+.axis {
+  font: 1vw arial;
+}
+
+.axis-label {
+  fill: white;
+  font-family: Arial;
+  font-size: 1vw;
+}
+
+.plot-title {
+  font-family: Arial sans-serif;
+  font-size: 1.8vw;
+  font-weight: 800;
+  fill: #f2f2f2;
 }
 
 
