@@ -5,6 +5,6 @@
 * React
 * Fullpage.js
 * D3.js
-* Tableau
+* Chart.js
 
 ## Data Source
