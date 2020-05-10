@@ -20,7 +20,7 @@ function App() {
                 anchors={[
                     "homePage",
                     "tuitionPage",
-                    "fundingPage",
+                    "loanPage",
                     "salaryPage",
                 ]}
                 menu=".menu"
