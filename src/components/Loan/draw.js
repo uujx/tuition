@@ -10,9 +10,9 @@ const draw = (data) => {
         top: 150,
         right: 20,
         bottom: 20,
-        left: 40,
+        left: 50,
     }
-    const width = 700 + margin.left + margin.right
+    const width = 800 + margin.left + margin.right
     const height = 450 + margin.top + margin.bottom
     const pixel_x_range = [margin.left, width - margin.right]
     const pixel_y_range = [height - margin.bottom, margin.top]
