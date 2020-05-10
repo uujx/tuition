@@ -6,8 +6,6 @@ const draw = (data) => {
         d.Borrowers = +d.Borrowers
     })
 
-    console.log(data)
-
     const margin = {
         top: 150,
         right: 20,
@@ -45,8 +43,8 @@ const draw = (data) => {
     const y = d3.scaleLinear().domain([0, max_data]).range(pixel_y_range)
 
 
-    //  Add the X Axis
-    // render axis first before lines so that lines will overlay the horizontal ticks
+    // Add the X Axis
+    // Render axis first before lines so that lines will overlay the horizontal ticks
     const xAxis = d3.axisBottom(x)
     const yAxis = d3
         .axisLeft(y)
@@ -108,7 +106,7 @@ const draw = (data) => {
         .on("mouseover", function (d) {
             this.style.opacity = 0.9
             div.transition().duration(200).style("opacity", 0.9)
-            div.html(`${d.Borrowers}M`)
+            div.html(`Borrowers: ${d.Borrowers}M`)
                 .style("left", d3.event.pageX - 100 + "px")
                 .style("top", d3.event.pageY - 100 + "px")
         })

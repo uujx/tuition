@@ -24,9 +24,9 @@ function App() {
                     "salaryPage",
                 ]}
                 menu=".menu"
-                navigation={true}
+                // navigation={true}
                 scrollOverflow={true}
-                sectionsColor={["#FF5F45", "#141B41", "#AD3B44", "#FEC401"]}
+                sectionsColor={["#FF5F45", "#141B41", "#AD3B44", "#001A23"]}
                 onLeave={onLeave.bind(this)}
                 afterLoad={afterLoad.bind(this)}
                 render={({ state, fullpageApi }) => (
