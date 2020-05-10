@@ -1,11 +1,11 @@
 
 .tuition-text-box {
-    display: inline-block;
+    float: left;
     width: 30%;
 }
 
 .tuition-plot {
-    display: inline-block;
+    float: right;
     width: 65%;
     height: 70%;
 }

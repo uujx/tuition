@@ -13,7 +13,7 @@ const Menu = () => {
                         <a href="#tuitionPage">Tuition section</a>
                     </li>
                     <li data-menuanchor="fundingPage">
-                        <a href="#fundingPage">Funding section</a>
+                        <a href="#fundingPage">Loan section</a>
                     </li>
                     <li data-menuanchor="salaryPage">
                         <a href="#salaryPage">Salary section</a>

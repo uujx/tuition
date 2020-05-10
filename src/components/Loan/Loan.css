@@ -1,8 +1,8 @@
 
 .loan-text-box {
-    display: inline-block;
+    float: right;
     width: 30%;
-    margin: auto;
+    margin-right: 3%;
 }
 
 .loan-description {
@@ -10,7 +10,7 @@
 }
 
 .loan-plot {
-    display: inline-block;
+    float: left;
     width: 60%;
     height: 80%;
     /* background-color: lightgray; */
