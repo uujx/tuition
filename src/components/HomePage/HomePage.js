@@ -7,11 +7,12 @@ const HomePage = () => {
             <h3>Data Visualization Project for Tuition</h3>
             <h4>Jinxing Wang & Shuqi Zhao</h4>
             <div className="intro description">
-                Some description about the project and data.Some description
-                about the project and data.Some description about the project
-                and data.Some description about the project and data.Some
-                description about the project and data.Some description about
-                the project and data.
+                The discussion of "Is college worth it?" has become hot in the
+                last 10 years. In this project, we show how college tuition fees
+                have increased from 2000 to 2016. Then we give a distribution
+                chart of how many Americans are repaying for their Federal
+                Student Loan. In the end we also show the mid-career salary
+                expectation on most college majors.
             </div>
         </div>
     )

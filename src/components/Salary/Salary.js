@@ -174,12 +174,17 @@ const Salary = (props) => {
                 <div className="salary-text-box">
                     <h3>How College Pays back</h3>
                     <p className="description">
-                        Detailed description.Detailed description.Detailed
-                        description.Detailed description.Detailed
-                        description.Detailed description.Detailed
-                        description.Detailed description.Detailed
-                        description.Detailed description.Detailed
-                        description.Detailed description.Detailed description.
+                        With so much student loans to repay, here shows the mid
+                        career salary for some undergraduate majors. We show the
+                        10th, 25th, 50th, 75th, and 90th percentile mid-career
+                        salary to give a general expectation of the upper and
+                        lower boundary. The more practical the major, the higher
+                        the upper and lower boundaries. Scoll right to see
+                        chart.
+                    </p>
+                    <p className="description">
+                        Data Source: https://www.kaggle.com/wsj/college-salaries
+                        Created by Chart.js
                     </p>
                 </div>
             </div>

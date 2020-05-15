@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from "react"
-import { csv, select } from 'd3'
+import { csv, select } from "d3"
 import draw from "./draw"
-import data from '../../data/loan.csv'
+import data from "../../data/loan.csv"
 import "./Loan.css"
 
 const Loan = () => {
-
     const [loanState, setLoanState] = useState([])
 
     const box = useRef()
 
     useEffect(() => {
-        csv(data).then(data => setLoanState(data))
+        csv(data).then((data) => setLoanState(data))
     }, [])
 
     useEffect(() => {
@@ -25,15 +24,19 @@ const Loan = () => {
             <div className="loan-text-box">
                 <h3>Student Loan</h3>
                 <p className="description">
-                    Includes the number of Direct Loan borrowers in the
-                    specified debt size category. The borrower is the person
-                    that holds the federal student loan. In most cases, the
-                    borrower is the student, but in parent PLUS loans, the
-                    parent is the borrower.Includes the number of Direct Loan borrowers in the
-                    specified debt size category. The borrower is the person
-                    that holds the federal student loan. In most cases, the
-                    borrower is the student, but in parent PLUS loans, the
-                    parent is the borrower.
+                    The chart shows the number of Direct Loan borrowers in 2020
+                    in the specified debt size category. The borrower is the
+                    person that holds the Federal Student Loan, which could be
+                    the student or their parents. The total number of Direct
+                    Loan borrowers are around 37.5 millions. More than 10
+                    million of them still have more than $40k loans to repay.
+                    The amount of loans varies from each student, but it could
+                    goes up to more than 200k.
+                </p>
+                <p>
+                    Data source:
+                    https://studentaid.gov/data-center/student/portfolio Created
+                    by D3.js
                 </p>
             </div>
         </div>

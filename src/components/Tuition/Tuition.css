@@ -2,6 +2,7 @@
 .tuition-text-box {
     float: left;
     width: 30%;
+    padding-left: 3%;
 }
 
 .tuition-plot {

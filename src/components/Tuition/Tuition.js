@@ -27,10 +27,19 @@ const Tuition = () => {
             <div className="tuition-text-box">
                 <h3>Tuition</h3>
                 <p className="description">
-                    Data description: the tuition fee increase a lot throughout the years.
-                    For private colledge, the tuition is almost half amount of the median of 
-                    annual household income. 
-                    Data source: ...
+                    Here we compare the annual income of American families from
+                    2000 to 2016 with the average college tuition fees, which
+                    includes the average of public college, private college, and
+                    all colleges. All numbers are in constant dollar which means
+                    they are adjusted for inflation. As it shows on the left,
+                    the American household income falls and rises, but the
+                    tuition fee has been experiencing a 30% growth throughout
+                    these years. For private college, the tuition hits almost
+                    half of the median of annual household income.
+                </p>
+                <p>
+                    Data source:
+                    https://www.kaggle.com/jessemostipak/college-tuition-diversity-and-pay
                     Created by D3.js
                 </p>
             </div>
