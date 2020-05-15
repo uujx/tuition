@@ -7,4 +7,7 @@
 * D3.js
 * Chart.js
 
-## Data Source
+## Usage
+
+1. npm install
+2. npm start
