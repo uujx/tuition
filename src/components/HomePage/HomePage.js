@@ -4,8 +4,7 @@ import "./HomePage.css"
 const HomePage = () => {
     return (
         <div className="section" data-anchor="homePage">
-            <h3>Data Visualization Project for Tuition</h3>
-            <h4>Jinxing Wang & Shuqi Zhao</h4>
+            <h3>Data Visualization for US College Tuition</h3>
             <div className="intro description">
                 The discussion of "Is college worth it?" has become hot in the
                 last 10 years. In this project, we show how college tuition fees
